@@ -21,7 +21,7 @@ module.exports = {
                 }
             },
             '/xqts':{
-                target: " http://43.143.200.36:8000/", //目标地址，一般是指后台服务器地址
+                target: " http://xiaoqingtou.vip:7000/", //目标地址，一般是指后台服务器地址
                 changeOrigin: true, //是否跨域
                 secure:true,
                 ws:true,

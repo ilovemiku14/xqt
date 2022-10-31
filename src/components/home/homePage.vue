@@ -1,10 +1,9 @@
 <template>
 <el-row>
   <el-row  style="height: 200px">
-    <el-carousel class="carousels">
+    <el-carousel class="carousels" >
       <el-carousel-item v-for="(item, index) in item" :key="index">
         <img v-bind:src='item' width="100%">
-
       </el-carousel-item>
     </el-carousel>
   </el-row>
@@ -51,9 +50,9 @@ export default {
       pageTotal:0,
       currentDate: new Date(),
       item:[
-          "https://images.nintendolife.com/ca702338af47c/hatsune-miku.900x.jpg",
-          "https://tva2.sinaimg.cn/large/0072Vf1pgy1foxkf5ytavj31kw0w0ts3.jpg",
-          "https://tva2.sinaimg.cn/large/0072Vf1pgy1foxlhyr0vsj31hc0u0ndt.jpg"
+          "https://s1.ax1x.com/2022/10/28/x46oz8.jpg",
+          "https://s1.ax1x.com/2022/10/28/x46oz8.jpg",
+          "https://s1.ax1x.com/2022/10/28/x46oz8.jpg"
       ]
     };
   },

@@ -115,16 +115,22 @@ export default {
       if (this.ruleForm.role=='2'){
         this.ruleForm.role='0'
       }
-      let userMSG={
-          "userName": this.ruleForm.userName,
-          "password": this.ruleForm.password,
-          "name": this.ruleForm.userName,
+      // let userMSG={
+      //     "userName": this.ruleForm.userName,
+      //     "password": this.ruleForm.password,
+      //     "name": this.ruleForm.userName,
+      //     "role":this.ruleForm.role
+      //     // "role":parseInt(this.ruleForm.role)
+      // }
+      const data = new FormData();
+      data.append("userName", this.ruleForm.userName);
+      data.append("password", this.ruleForm.password);
+      data.append("name", this.ruleForm.userName);
+      data.append("role", this.ruleForm.role);
 
-          "role":parseInt(this.ruleForm.role)
-      }
       // console.log(userMSG.role)
-      axios.post("/xqts/register",userMSG).then(res=>{
-        if (res.data.title){
+      axios.post("/xqts/register",data).then(res=>{
+        if (res.data.code==200){
           this.$message({
             message: '注册成功！跳转登录',
             type: 'success'
@@ -162,17 +168,16 @@ export default {
           userName:this.userInput,
           password:this.passwordInput,
         }).then(res=>{
-          console.log(res.data)
-          if (res.data.title){
+          if (res.data.code==200){
             this.$message({
               message: '登录成功！跳转中~',
               type: 'success'
             });
-            console.log(res.data.message[0])
-            window.sessionStorage.setItem("name",res.data.message[0].name)
-            window.sessionStorage.setItem("userName",res.data.message[0].userName)
-            window.sessionStorage.setItem("role",res.data.message[0].role)
-            window.sessionStorage.setItem("tmoney",res.data.message[0].tmoney)
+            window.sessionStorage.setItem("name",res.data.data.name)
+            window.sessionStorage.setItem("userName",res.data.data.userName)
+            window.sessionStorage.setItem("role",res.data.data.role)
+            window.sessionStorage.setItem("tmoney",res.data.data.tmoney)
+            window.sessionStorage.setItem("imageUrl",res.data.data.image)
               this.$router.push({
               path: '/main'
             })
